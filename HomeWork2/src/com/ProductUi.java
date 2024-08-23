@@ -44,7 +44,6 @@ public class ProductUi extends JFrame {
 	private JTable t;
 	private JTextField addName;
 	private JTextField addPrice;
-	private JTextField addAmount;
 	
 	/**
 	 * Launch the application.
@@ -126,19 +125,14 @@ public class ProductUi extends JFrame {
 		scrollPane.setViewportView(output);
 		
 		addName = new JTextField();
-		addName.setBounds(541, 15, 96, 21);
+		addName.setBounds(460, 109, 96, 21);
 		contentPane.add(addName);
 		addName.setColumns(10);
 		
 		addPrice = new JTextField();
-		addPrice.setBounds(541, 64, 96, 21);
+		addPrice.setBounds(569, 109, 96, 21);
 		contentPane.add(addPrice);
 		addPrice.setColumns(10);
-		
-		addAmount = new JTextField();
-		addAmount.setBounds(541, 109, 96, 21);
-		contentPane.add(addAmount);
-		addAmount.setColumns(10);
 //		System.out.println(t.getName());
 //		System.out.println(t.getValueAt(0, 1));
 //		
@@ -313,24 +307,28 @@ public class ProductUi extends JFrame {
 		
 		t.setModel(new DefaultTableModel(
 			new Object[][] {
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"\u6703\u54E1\u7B49\u7D1A", "\u6298\u6263"
 			}
 		));
-		t.setBounds(489, 133, 205, 48);
+		t.setBounds(460, 22, 205, 63);
 		contentPane.add(t);
 		
 		JButton addin = new JButton("加入");
 		addin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(addName.getText().equals("")||addPrice.getText().equals("")||addAmount.getText().equals(""))
+				if(addName.getText().equals("")||addPrice.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(addin,"請輸入正確資料");
 				}
 				else
 				{
-					String data[] = {addName.getText(),addPrice.getText(),addAmount.getText()};
+					String data[] = {addName.getText(),addPrice.getText()};
 					
 					DefaultTableModel tm= (DefaultTableModel)t.getModel();
 					
@@ -344,7 +342,7 @@ public class ProductUi extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		addin.setBounds(641, 108, 87, 23);
+		addin.setBounds(513, 158, 87, 23);
 		contentPane.add(addin);
 		t.addMouseListener(new MouseAdapter() {
 			@Override
@@ -353,11 +351,11 @@ public class ProductUi extends JFrame {
 				
 				String AddName =tm.getValueAt(t.getSelectedRow(),0).toString();
 				String AddPrice =tm.getValueAt(t.getSelectedRow(),1).toString();
-				String AddAmount =tm.getValueAt(t.getSelectedRow(),2).toString();
+//				String AddAmount =tm.getValueAt(t.getSelectedRow(),2).toString();
 				
 				addName.setText(AddName);
 				addPrice.setText(AddPrice);
-				addAmount.setText(AddAmount);
+				
 			}
 		});	
 	}
