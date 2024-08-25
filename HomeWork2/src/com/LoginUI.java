@@ -12,13 +12,14 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 public class LoginUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField name;
-	private JTextField pas;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -47,10 +48,17 @@ public class LoginUI extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
+		passwordField = new JPasswordField();
+		passwordField.setToolTipText("Password");
+		passwordField.setBounds(155, 150, 97, 21);
+		contentPane.add(passwordField);
+
 
 		JLabel lblNewLabel = new JLabel("登入畫面");
 		lblNewLabel.setFont(new Font("新細明體", Font.BOLD, 26));
-		lblNewLabel.setBounds(147, 32, 131, 34);
+		lblNewLabel.setBounds(155, 32, 131, 34);
 		contentPane.add(lblNewLabel);
 
 		JLabel error1 = new JLabel("");
@@ -62,18 +70,14 @@ public class LoginUI extends JFrame {
 		contentPane.add(error2);
 
 		name = new JTextField();
-		name.setBounds(156, 101, 96, 21);
+		name.setText("UserName");
+		name.setBounds(155, 100, 96, 21);
 		contentPane.add(name);
 		name.setColumns(10);
 
-		pas = new JTextField();
-		pas.setBounds(156, 158, 96, 21);
-		contentPane.add(pas);
-		pas.setColumns(10);
-
 		JLabel lblNewLabel_1 = new JLabel("帳號");
 		lblNewLabel_1.setFont(new Font("新細明體", Font.BOLD, 20));
-		lblNewLabel_1.setBounds(64, 99, 64, 23);
+		lblNewLabel_1.setBounds(64, 100, 64, 23);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("密碼");
@@ -88,7 +92,7 @@ public class LoginUI extends JFrame {
 				error1.setText("");
 				error2.setText("");
 				String Name = name.getText();
-				String Pas = pas.getText();
+				String Pas = passwordField.getText();
 				Login l1 = new Login("admin", "123");
 				Login l2 = new Login(Name, Pas);
 
@@ -106,7 +110,7 @@ public class LoginUI extends JFrame {
 				}
 			}
 		});
-		login.setBounds(165, 212, 87, 23);
+		login.setBounds(155, 212, 87, 23);
 		contentPane.add(login);
 
 		JButton close = new JButton("離開");
